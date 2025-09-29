@@ -84,6 +84,10 @@ export default defineType({
           name: 'timeline',
           type: 'timeline',
         }),
+         defineArrayMember({
+          name: 'hero',
+          type: 'heroSection',
+        }),
         defineField({
           type: 'image',
           icon: ImageIcon,
@@ -112,6 +116,7 @@ export default defineType({
             }),
           ],
         }),
+       
       ],
     }),
   ],
