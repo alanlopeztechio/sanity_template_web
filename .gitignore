@@ -5,7 +5,7 @@
 /studio/node_modules
 /.pnp
 .pnp.js
-
+.pnpm-storepnpm
 # testing
 /coverage
 
