@@ -19,6 +19,10 @@ import {unsplashImageAsset} from 'sanity-plugin-asset-source-unsplash'
 import {presentationTool} from 'sanity/presentation'
 import {structureTool} from 'sanity/structure'
 import { heroSection } from './sanity/schemas/objects/herosection'
+import { featureItem } from './sanity/schemas/objects/featureItem'
+import { featureSection } from './sanity/schemas/objects/featureSection'
+import { statsSection } from './sanity/schemas/objects/statsSection'
+import ctaSection from './sanity/schemas/objects/ctaSection'
 
 const title =
   process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE || 'Next.js Personal Website with Sanity.io'
@@ -42,6 +46,13 @@ export default defineConfig({
       milestone,
       timeline,
       heroSection,
+      // Feature components
+      featureItem,
+      featureSection,
+      // Stats components
+      statsSection,
+      // CTA components
+      ctaSection
     ],
   },
   plugins: [
