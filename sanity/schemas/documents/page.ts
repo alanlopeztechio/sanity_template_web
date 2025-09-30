@@ -84,6 +84,22 @@ export default defineType({
           name: 'timeline',
           type: 'timeline',
         }),
+        defineArrayMember({
+          name: 'hero',
+          type: 'heroSection',
+        }),
+        defineArrayMember({
+          name: 'featureSection',
+          type: 'featureSection',
+        }),
+        defineArrayMember({
+          name: 'statsSection',
+          type: 'statsSection',
+        }),
+        defineArrayMember({
+          name: 'ctaSection',
+          type: 'ctaSection',
+        }),
         defineField({
           type: 'image',
           icon: ImageIcon,
@@ -112,6 +128,7 @@ export default defineType({
             }),
           ],
         }),
+       
       ],
     }),
   ],

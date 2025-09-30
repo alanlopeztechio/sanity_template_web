@@ -29,7 +29,7 @@ export default defineType({
               type: 'array',
               of: [
                 defineField({
-                  name: 'milestone',
+                name: 'milestone',
                   title: 'Milestone',
                   type: 'milestone',
                 }),

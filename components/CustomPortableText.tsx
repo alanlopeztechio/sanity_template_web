@@ -1,8 +1,13 @@
 import ImageBox from '@/components/ImageBox'
 import {TimelineSection} from '@/components/TimelineSection'
+import { heroSection } from '@/sanity/schemas/objects/herosection'
 import type {PathSegment} from '@sanity/client/csm'
 import {PortableText, type PortableTextBlock, type PortableTextComponents} from 'next-sanity'
 import type {Image} from 'sanity'
+import { HeroSection } from './HeroSection'
+import { FeatureSection } from './FeatureSection'
+import { StatsSection } from './StatsSection'
+import { CTASection } from './CTASection'
 
 export function CustomPortableText({
   id,
@@ -59,7 +64,23 @@ export function CustomPortableText({
           />
         )
       },
-    },
+      hero: (({ value }) => {
+        const { titulo } = value || {};
+        return <HeroSection titulo={titulo} type={type!}  />
+      }),
+      featureSection: ({ value }) => {
+      const {title, subtitle, features} = value || {}
+        return <FeatureSection title={title} description={subtitle} features={features}/>
+      },
+      statsSection: ({ value }) => {
+        const {title, subtitle, stats} = value || {}
+        return <StatsSection title={title} subtitle={subtitle} stats={stats}/>
+      },
+      ctaSection: ({ value }) => { 
+        const {titulo, subtitulo, beneficios} = value || {}
+        return <CTASection titulo={titulo} subtitulo={subtitulo} beneficios={beneficios} />
+      }
+     },
   }
 
   return <PortableText components={components} value={value} />
