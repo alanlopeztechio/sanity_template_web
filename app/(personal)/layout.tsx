@@ -14,6 +14,7 @@ import {Toaster} from 'sonner'
 import {handleError} from './client-functions'
 import {DraftModeToast} from './DraftModeToast'
 import {SpeedInsights} from '@vercel/speed-insights/next'
+import { Footer } from '@/components/Footer'
 
 export async function generateMetadata(): Promise<Metadata> {
   const [{data: settings}, {data: homePage}] = await Promise.all([
@@ -51,7 +52,7 @@ export default async function IndexRoute({children}: {children: React.ReactNode}
         <Navbar data={data} />
         <div className="mt-20 flex-grow">{children}</div> 
         {/* Borre lo siguiente del div de arriva px-4 md:px-16 lg:px-32 */}
-        <footer className="bottom-0 w-full bg-white py-12 text-center md:py-20">
+        {/* <footer className="bottom-0 w-full bg-white py-12 text-center md:py-20">
           {data?.footer && (
             <CustomPortableText
               id={data._id}
@@ -61,10 +62,11 @@ export default async function IndexRoute({children}: {children: React.ReactNode}
               value={data.footer as unknown as PortableTextBlock[]}
             />
           )}
-        </footer>
-        <Suspense>
+        </footer> */}
+        <Footer/>
+        {/* <Suspense>
           <IntroTemplate />
-        </Suspense>
+        </Suspense> */}
       </div>
       <Toaster />
       <SanityLive onError={handleError} />

@@ -26,9 +26,9 @@ export const FeatureSection = ({title, description, icon, features}: FeatureProp
           </p>
         </div>
 
-        <div className={cn("mx-auto mt-16 grid",
-          features.length === 2 ? "sm:grid-cols-2 lg:grid-cols-2" : (features.length === 4 ? "sm:grid-cols-2 lg:grid-cols-4" : ""
-        ))}>
+         <div  className={`mx-auto mt-16 grid max-w-screen-lg gap-6 
+        ${features.length === 1 ? "grid-cols-1 lg:grid-cols-1" : (features.length === 2 ? "grid-cols-1 sm:grid-cols-2 justify-center" : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3")}`}
+      >
           {features.map((feature, index) => (
             <Card
               key={index}

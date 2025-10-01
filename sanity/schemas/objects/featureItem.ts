@@ -10,14 +10,14 @@ export const featureItem = defineType({
              name: 'title',
              title: 'Título',
              description: 'Título de la característica',
-             validation: Rule => Rule.required().min(5).max(50)
+             validation: Rule => Rule.required().min(5)
         },
          {
              type: 'string',
              name: 'description',
              title: 'Descripción',
              description: 'Descripción de la característica',
-             validation: Rule => Rule.required().min(5).max(50)
+             validation: Rule => Rule.required().min(5)
         },
     ]
 })

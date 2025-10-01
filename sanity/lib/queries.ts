@@ -52,7 +52,6 @@ export const settingsQuery = defineQuery(`
   *[_type == "settings"][0]{
     _id,
     _type,
-    footer,
     menuItems[]{
       _key,
       ...@->{

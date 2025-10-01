@@ -7,6 +7,7 @@ import Link from 'next/link'
 export default async function IndexRoute() {
   const {data} = await sanityFetch({query: homePageQuery})
 
+  console.log('data', data)
   if (!data) {
     return (
       <div className="text-center">
