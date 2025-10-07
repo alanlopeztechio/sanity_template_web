@@ -8,9 +8,9 @@ import * as resolve from '@/sanity/plugins/resolve'
 import {pageStructure, singletonPlugin} from '@/sanity/plugins/settings'
 import page from '@/sanity/schemas/documents/page'
 import project from '@/sanity/schemas/documents/project'
-import duration from '@/sanity/schemas/objects/duration'
-import milestone from '@/sanity/schemas/objects/milestone'
-import timeline from '@/sanity/schemas/objects/timeline'
+import duration from '@/sanity/schemas/objects/modules/duration'
+import milestone from '@/sanity/schemas/objects/modules/milestone'
+import timeline from '@/sanity/schemas/objects/modules/timeline'
 import home from '@/sanity/schemas/singletons/home'
 import settings from '@/sanity/schemas/singletons/settings'
 import {visionTool} from '@sanity/vision'
@@ -18,11 +18,15 @@ import {defineConfig} from 'sanity'
 import {unsplashImageAsset} from 'sanity-plugin-asset-source-unsplash'
 import {presentationTool} from 'sanity/presentation'
 import {structureTool} from 'sanity/structure'
-import { heroSection } from './sanity/schemas/objects/herosection'
-import { featureItem } from './sanity/schemas/objects/featureItem'
-import { featureSection } from './sanity/schemas/objects/featureSection'
-import { statsSection } from './sanity/schemas/objects/statsSection'
-import ctaSection from './sanity/schemas/objects/ctaSection'
+import { heroSection } from './sanity/schemas/objects/modules/herosection'
+import { featureItem } from './sanity/schemas/objects/modules/featureItem'
+import { featureSection } from './sanity/schemas/objects/modules/featureSection'
+import { statsSection } from './sanity/schemas/objects/modules/statsSection'
+import ctaSection from './sanity/schemas/objects/modules/ctaSection'
+import { linkExternal } from './sanity/schemas/objects/link/linkExternal'
+import { linkInternal } from './sanity/schemas/objects/link/linkInternal'
+import { footerType } from './sanity/schemas/objects/global/footer'
+import { navType } from './sanity/schemas/objects/global/nav'
 
 const title =
   process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE || 'Next.js Personal Website with Sanity.io'
@@ -42,17 +46,19 @@ export default defineConfig({
       duration,
       page,
       project,
+      //Global
+      linkExternal,
+      linkInternal,
+      footerType,
+      navType,
       // Objects
       milestone,
       timeline,
       heroSection,
-      // Feature components
       featureItem,
       featureSection,
-      // Stats components
       statsSection,
-      // CTA components
-      ctaSection
+      ctaSection,
     ],
   },
   plugins: [

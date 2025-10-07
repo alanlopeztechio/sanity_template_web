@@ -14,7 +14,7 @@ export interface HomePageProps {
 
 export async function HomePage({data}: HomePageProps) {
   // Default to an empty object to allow previews on non-existent documents
-  const {overview = [], showcaseProjects = [], title = '', body, _id, _type} = data ?? {}
+  const {overview = [], showcaseProjects = [], title = '',body , _id, _type} = data ?? {}
 
   const dataAttribute =
     data?._id && data?._type

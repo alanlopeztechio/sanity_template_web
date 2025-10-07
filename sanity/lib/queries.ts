@@ -17,6 +17,7 @@ export const homePageQuery = defineQuery(`
         title,
       }
     },
+    body,
     title,
   }
 `)
@@ -60,7 +61,32 @@ export const settingsQuery = defineQuery(`
         title
       }
     },
+    footer{
+      ...,
+      columns[]{
+        ...,
+        links[]{
+          ...,
+          "url" : select(
+          _type == 'linkExternal' =>url,
+          _type == 'linkInternal' =>reference->slug.current
+          )
+        }
+      }
+    },
     ogImage,
+    nav{
+      menus[]{
+        ...,
+        "slug": link.reference -> slug.current,
+        "type_reference" : link.reference-> _type,
+        submenus[]{
+          ...,
+          "slug": link.reference -> slug.current,
+          "type_reference" : link.reference-> _type,
+        }
+      }
+    }
   }
 `)
 

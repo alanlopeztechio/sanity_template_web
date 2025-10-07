@@ -33,72 +33,9 @@ export default defineType({
       ],
     }),
     defineField({
-      name: 'footer',
-      title: 'Footer Columns',
-      description: 'This is a block of text that will be displayed at the bottom of the page.',
-      type: 'array',
-      of: [
-        defineArrayMember({
-          type: 'object',
-          name: 'footerColumn',
-          title: 'Footer Column',
-          fields: [
-            defineField({
-              name: 'titulo',
-              title: 'Título de la columna',
-              type: 'string',
-            }),
-            defineField({
-              name: 'links',
-              title: 'Links',
-              type: 'array',
-              of: [
-                defineArrayMember({
-                  type: 'object',
-                  name: 'footerLink',
-                  title: 'Footer Link',
-                  fields: [
-                    defineField({
-                      name: 'type',
-                      title: 'Tipo de link',
-                      type: 'string',
-                      options: {
-                        list: [
-                          { title: 'Page', value: 'page' },
-                          { title: 'Custom URL', value: 'custom' },
-                        ],
-                        layout: 'radio',
-                        direction: 'horizontal',
-                      },
-                      initialValue: 'page',
-                      validation: Rule => Rule.required(),
-                    }),
-                    defineField({
-                      name: 'label',
-                      title: 'Label',
-                      type: 'string',
-                      validation: Rule => Rule.required(),
-                    }),
-                    defineField({
-                      name: 'page',
-                      title: 'Página a enlazar',
-                      type: 'reference',
-                      to: [{ type: 'page' }],
-                      hidden: ({ parent }) => parent?.type !== 'page',
-                    }),
-                    defineField({
-                      name: 'url',
-                      title: 'Custom URL',
-                      type: 'url',
-                      hidden: ({ parent }) => parent?.type !== 'custom',
-                    }),
-                  ],
-                }),
-              ],
-            }),
-          ],
-        }),
-      ],
+      name: 'nav',
+      title: 'Navegador',
+      type: 'nav',
     }),
     defineField({
       name: 'ogImage',
@@ -109,6 +46,11 @@ export default defineType({
         hotspot: true,
       },
     }),
+    defineField({
+      name: 'footer',
+      title: 'Footer Columns',
+      type: 'footer',
+    })
   ],
   preview: {
     prepare() {

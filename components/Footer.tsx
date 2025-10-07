@@ -2,19 +2,19 @@ import { sanityFetch } from "@/sanity/lib/live";
 import { settingsQuery } from "@/sanity/lib/queries";
 import { GraduationCap } from "lucide-react";
 import React from "react";
+import type { SettingsQueryResult } from "@/sanity.types";
+import Link from "next/link";
+import { resolveHref } from "@/sanity/lib/utils";
 
+interface Props {
+    columns?: NonNullable<NonNullable<SettingsQueryResult>['footer']>['columns'];
+}
 
+export const Footer = ({ columns }: Props) => {
+        
+    if (!columns || columns.length === 0) return null;
 
-export const Footer = async () => {
-    const {data}  = await  sanityFetch({
-        query : settingsQuery
-    })
-
-
-    const { footer } = data || {};
-    
-    console.log("-----------",footer);
-    return <footer className="border-t border-border bg-muted/30">
+    return <footer className="border-t w-full flex justify-center border-border bg-muted/30">
         <div className="container max-w-screen-xl px-4 py-12">
             <div className="grid gap-8 lg:grid-cols-4">
                 <div className="lg:col-span-1">
@@ -26,89 +26,30 @@ export const Footer = async () => {
                         La plataforma líder en administración educativa para instituciones modernas.
                     </p>
                 </div>
-
-                
-
-
                 <div>
-                    <h3 className="font-semibold text-foreground mb-4">Producto</h3>
-                    <ul className="space-y-2 text-sm text-muted-foreground">
-                        <li>
-                            <a href="#" className="hover:text-foreground transition-colors">
-                                Características
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" className="hover:text-foreground transition-colors">
-                                Integraciones
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" className="hover:text-foreground transition-colors">
-                                API
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" className="hover:text-foreground transition-colors">
-                                Seguridad
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h3 className="font-semibold text-foreground mb-4">Empresa</h3>
-                    <ul className="space-y-2 text-sm text-muted-foreground">
-                        <li>
-                            <a href="#" className="hover:text-foreground transition-colors">
-                                Acerca de
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" className="hover:text-foreground transition-colors">
-                                Blog
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" className="hover:text-foreground transition-colors">
-                                Carreras
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" className="hover:text-foreground transition-colors">
-                                Contacto
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h3 className="font-semibold text-foreground mb-4">Soporte</h3>
-                    <ul className="space-y-2 text-sm text-muted-foreground">
-                        <li>
-                            <a href="#" className="hover:text-foreground transition-colors">
-                                Centro de Ayuda
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" className="hover:text-foreground transition-colors">
-                                Documentación
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" className="hover:text-foreground transition-colors">
-                                Estado del Sistema
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" className="hover:text-foreground transition-colors">
-                                Comunidad
-                            </a>
-                        </li>
-                    </ul>
+                    {
+                        columns?.map((column, index) => {
+                        return (
+                            <React.Fragment key={index}>
+                                <h3 className="font-semibold text-foreground mb-4">{column.titulo}</h3>
+                                <ul className="space-y-2 text-sm text-muted-foreground">
+                                    {column.links?.map((link, linkIdx) => {
+                                        const url = link._type === 'linkExternal' ? link.url : resolveHref(link._type, link.url);
+                                        return (
+                                            <li key={linkIdx}>
+                                                <Link href={url!} className="hover:text-foreground transition-colors">
+                                                    {link.label}
+                                                </Link>
+                                            </li>
+                                        );
+                                    })}
+                                </ul>
+                            </React.Fragment>
+                        );
+                        })
+                    }
                 </div>
             </div>
-
             <div className="mt-8 pt-8 border-t border-border flex flex-col sm:flex-row justify-between items-center gap-4">
                 <p className="text-xs text-muted-foreground">© 2025 EduAdmin. Todos los derechos reservados.</p>
                 <div className="flex gap-6 text-xs text-muted-foreground">

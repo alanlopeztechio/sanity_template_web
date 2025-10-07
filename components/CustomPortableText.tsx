@@ -1,6 +1,6 @@
 import ImageBox from '@/components/ImageBox'
 import {TimelineSection} from '@/components/TimelineSection'
-import { heroSection } from '@/sanity/schemas/objects/herosection'
+import { heroSection } from '@/sanity/schemas/objects/modules/herosection'
 import type {PathSegment} from '@sanity/client/csm'
 import {PortableText, type PortableTextBlock, type PortableTextComponents} from 'next-sanity'
 import type {Image} from 'sanity'

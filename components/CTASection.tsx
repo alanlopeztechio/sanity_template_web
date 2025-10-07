@@ -13,10 +13,7 @@ interface CTASectionProps {
 
 
 export const CTASection = ({ titulo, subtitulo, beneficios }: CTASectionProps) => {
-    
-
-
-
+  
   return (
     <section className="py-20 sm:py-32">
       <div className="container max-w-screen-xl px-4">

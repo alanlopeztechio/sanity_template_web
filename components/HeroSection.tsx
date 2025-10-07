@@ -25,9 +25,6 @@ export const HeroSection = ({ titulo, type }: {
       text_secondary: ({ children }) => <span className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-muted-foreground text-pretty">{children}</span>,
     },
   };
-  
-  
-  console.log("HeroSection props:", titulo);
   return    <section className="relative overflow-hidden bg-background py-20 sm:py-32">
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
 

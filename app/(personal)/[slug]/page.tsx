@@ -70,7 +70,7 @@ export default async function PageSlugRoute({params}: Props) {
           />
         )}
       </div>
-      <div className="absolute left-0 w-screen border-t" />
+    
     </div>
   )
 }
