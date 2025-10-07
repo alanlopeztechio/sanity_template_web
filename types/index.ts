@@ -23,6 +23,10 @@ export interface BeneficioItem {
   beneficio: string
 }
 
+export interface Likn{
+  
+}
+
 export interface ShowcaseProject {
   _id: string
   _type: string
