@@ -13,6 +13,24 @@
  */
 
 // Source: schema.json
+export type InfoBlock = {
+  _type: "infoBlock";
+  iconFile?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.fileAsset";
+    };
+    media?: unknown;
+    _type: "file";
+  };
+  title?: string;
+  subtitle?: string;
+  description?: string;
+  accentColor?: string;
+};
+
 export type CtaSection = {
   _type: "ctaSection";
   titulo?: string;
@@ -280,6 +298,8 @@ export type Page = {
     _key: string;
   } | {
     _key: string;
+  } & InfoBlock | {
+    _key: string;
   } & Timeline | {
     _key: string;
   } & HeroSection | {
@@ -499,7 +519,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = CtaSection | StatsSection | FeatureSection | FeatureItem | HeroSection | Timeline | Milestone | Project | Duration | Settings | Page | Home | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = InfoBlock | CtaSection | StatsSection | FeatureSection | FeatureItem | HeroSection | Timeline | Milestone | Project | Duration | Settings | Page | Home | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./sanity/lib/queries.ts
 // Variable: homePageQuery
@@ -573,6 +593,8 @@ export type PagesBySlugQueryResult = {
   } & FeatureSection | {
     _key: string;
   } & HeroSection | {
+    _key: string;
+  } & InfoBlock | {
     _key: string;
   } & StatsSection | {
     _key: string;
@@ -698,28 +720,10 @@ export type ProjectBySlugQueryResult = {
   title: string | null;
 } | null;
 // Variable: settingsQuery
-// Query: *[_type == "settings"][0]{    _id,    _type,    footer[]{      ...,      links[]{      ...,      }    },    menuItems[]{      _key,      ...@->{        _type,        "slug": slug.current,        title      }    },    ogImage,  }
+// Query: *[_type == "settings"][0]{    _id,    _type,    menuItems[]{      _key,      ...@->{        _type,        "slug": slug.current,        title      }    },    ogImage,  }
 export type SettingsQueryResult = {
   _id: string;
   _type: "settings";
-  footer: Array<{
-    titulo?: string;
-    links: Array<{
-      type?: "custom" | "page";
-      label?: string;
-      page?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "page";
-      };
-      url?: string;
-      _type: "footerLink";
-      _key: string;
-    }> | null;
-    _type: "footerColumn";
-    _key: string;
-  }> | null;
   menuItems: Array<{
     _key: null;
     _type: "home";
@@ -762,7 +766,7 @@ declare module "@sanity/client" {
     "\n  *[_type == \"home\"][0]{\n    _id,\n    _type,\n    overview,\n    showcaseProjects[]{\n      _key,\n      ...@->{\n        _id,\n        _type,\n        coverImage,\n        overview,\n        \"slug\": slug.current,\n        tags,\n        title,\n      }\n    },\n    title,\n  }\n": HomePageQueryResult;
     "\n  *[_type == \"page\" && slug.current == $slug][0] {\n    _id,\n    _type,\n    body,\n    overview,\n    title,\n    \"slug\": slug.current,\n  }\n": PagesBySlugQueryResult;
     "\n  *[_type == \"project\" && slug.current == $slug][0] {\n    _id,\n    _type,\n    client,\n    coverImage,\n    description,\n    duration,\n    overview,\n    site,\n    \"slug\": slug.current,\n    tags,\n    title,\n  }\n": ProjectBySlugQueryResult;
-    "\n  *[_type == \"settings\"][0]{\n    _id,\n    _type,\n    footer[]{\n      ...,\n      links[]{\n      ...,\n      }\n    },\n    menuItems[]{\n      _key,\n      ...@->{\n        _type,\n        \"slug\": slug.current,\n        title\n      }\n    },\n    ogImage,\n  }\n": SettingsQueryResult;
+    "\n  *[_type == \"settings\"][0]{\n    _id,\n    _type,\n    menuItems[]{\n      _key,\n      ...@->{\n        _type,\n        \"slug\": slug.current,\n        title\n      }\n    },\n    ogImage,\n  }\n": SettingsQueryResult;
     "\n  *[_type == $type && defined(slug.current)]{\"slug\": slug.current}\n": SlugsByTypeQueryResult;
   }
 }

@@ -8,7 +8,7 @@ import { HeroSection } from './HeroSection'
 import { FeatureSection } from './FeatureSection'
 import { StatsSection } from './StatsSection'
 import { CTASection } from './CTASection'
-
+import { InfoBlock } from './InfoBlock'
 export function CustomPortableText({
   id,
   type,
@@ -79,8 +79,12 @@ export function CustomPortableText({
       ctaSection: ({ value }) => { 
         const {titulo, subtitulo, beneficios} = value || {}
         return <CTASection titulo={titulo} subtitulo={subtitulo} beneficios={beneficios} />
+      },
+      infoBlock: ({value}) => {
+        const {title, subtitulo, descripcion, iconoUrl, colorAcento} = value || {} 
+        return <InfoBlock title={title} subtitulo={subtitulo} descripcion={descripcion} iconoUrl={iconoUrl} colorAcento={colorAcento} />
       }
-     },
+     }
   }
 
   return <PortableText components={components} value={value} />

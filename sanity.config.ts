@@ -23,7 +23,7 @@ import { featureItem } from './sanity/schemas/objects/featureItem'
 import { featureSection } from './sanity/schemas/objects/featureSection'
 import { statsSection } from './sanity/schemas/objects/statsSection'
 import ctaSection from './sanity/schemas/objects/ctaSection'
-
+import infoBlock from './sanity/schemas/objects/infoBlock'
 const title =
   process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE || 'Next.js Personal Website with Sanity.io'
 
@@ -52,7 +52,10 @@ export default defineConfig({
       // Stats components
       statsSection,
       // CTA components
-      ctaSection
+      ctaSection,
+
+      //
+      infoBlock,
     ],
   },
   plugins: [

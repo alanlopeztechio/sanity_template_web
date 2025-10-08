@@ -81,6 +81,11 @@ export default defineType({
         }),
         // Custom blocks
         defineArrayMember({
+        name: 'infoBlock',
+        type: 'infoBlock',
+      }),
+
+        defineArrayMember({
           name: 'timeline',
           type: 'timeline',
         }),
