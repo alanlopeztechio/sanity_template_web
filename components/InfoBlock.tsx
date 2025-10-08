@@ -40,7 +40,6 @@ export const InfoBlock: React.FC<InfoBlockProps> = ({
       </div>
     
       <div className="flex-1">
-        <p>Holaaa este es mi bloquesone</p>
         <h3 className="text-lg font-semibold" style={{ color: colorAcento }}>{title}</h3>
         {subtitulo && <div className="text-sm text-gray-600 mt-1">{subtitulo}</div>}
         {descripcion && <p className="text-gray-700 mt-2">{descripcion}</p>}
