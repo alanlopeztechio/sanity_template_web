@@ -83,6 +83,9 @@ export default defineType({
         defineArrayMember({
         name: 'infoBlock',
         type: 'infoBlock',
+      }), defineArrayMember({
+        name: 'ImagewithText',
+        type: 'ImagewithText',
       }),
 
         defineArrayMember({

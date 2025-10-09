@@ -8,32 +8,32 @@ export default defineType({
   icon: ImageIcon,
   fields: [
     defineField({
-      name: 'iconFile',
+      name: 'icon', 
       title: 'Ícono (SVG o imagen)',
-      type: 'file',             // file para admitir SVG, PNG, etc.
-      options: { accept: 'image/*' },
+      type: 'image', 
+      options: { hotspot: true },
       description: 'Sube un SVG o PNG pequeño (ideal 32x32).'
     }),
     defineField({
-      name: 'title',
+      name: 'title', 
       title: 'Título',
       type: 'string',
       validation: (Rule) => Rule.required().max(120),
     }),
     defineField({
-      name: 'subtitle',
+      name: 'subtitle', 
       title: 'Subtítulo',
       type: 'string',
       validation: (Rule) => Rule.max(80),
     }),
     defineField({
-      name: 'description',
+      name: 'description', 
       title: 'Descripción',
       type: 'text',
       rows: 3,
     }),
     defineField({
-      name: 'accentColor',
+      name: 'accentColor', 
       title: 'Color de acento (hex)',
       type: 'string',
       description: 'Ej: #000000ff — opcional, usado para fondo del ícono',
@@ -43,13 +43,12 @@ export default defineType({
           invert: false,
         }).warning('Debe ser un color hex válido, p.e. #000000ff'),
     }),
- 
   ],
   preview: {
     select: {
       title: 'title',
       subtitle: 'subtitle',
-      media: 'iconFile'
+      media: 'icon'
     },
     prepare(selection) {
       const {title, subtitle, media} = selection

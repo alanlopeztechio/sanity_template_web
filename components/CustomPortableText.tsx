@@ -9,6 +9,8 @@ import { FeatureSection } from './FeatureSection'
 import { StatsSection } from './StatsSection'
 import { CTASection } from './CTASection'
 import { InfoBlock } from './InfoBlock'
+import { ImagewithText } from './ImagewithText'
+import { urlFor } from '@/lib/sanity'
 export function CustomPortableText({
   id,
   type,
@@ -81,11 +83,17 @@ export function CustomPortableText({
         return <CTASection titulo={titulo} subtitulo={subtitulo} beneficios={beneficios} />
       },
       infoBlock: ({value}) => {
-        const {title, subtitulo, descripcion, iconoUrl, colorAcento} = value || {} 
-        return <InfoBlock title={title} subtitulo={subtitulo} descripcion={descripcion} iconoUrl={iconoUrl} colorAcento={colorAcento} />
+        const {title, subtitle, description, icon, accentColor} = value || {} 
+        const iconUrl = icon ? urlFor(icon).url() : null;
+        return <InfoBlock title={title} subtitle={subtitle} description={description} iconUrl={iconUrl} accentColor={accentColor} />
+      },
+      ImagewithText: ({value}) => { 
+       
+        const {Titulo, Descripcion, Imagen, Alineacion} = value || {}
+        return <ImagewithText Titulo={Titulo} Descripcion={Descripcion} Imagen={Imagen} Alineacion={Alineacion}/>
       }
+     
      }
   }
-
   return <PortableText components={components} value={value} />
 }
