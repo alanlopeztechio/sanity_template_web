@@ -8,6 +8,7 @@ import { HeroSection } from './HeroSection'
 import { FeatureSection } from './FeatureSection'
 import { StatsSection } from './StatsSection'
 import { CTASection } from './CTASection'
+import { Bloque } from './Bloque'
 
 export function CustomPortableText({
   id,
@@ -79,6 +80,9 @@ export function CustomPortableText({
       ctaSection: ({ value }) => { 
         const {titulo, subtitulo, beneficios} = value || {}
         return <CTASection titulo={titulo} subtitulo={subtitulo} beneficios={beneficios} />
+      },
+      bloque_ejemplo: ({ value }) => {
+        return <Bloque {...value} />
       }
      },
   }

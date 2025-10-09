@@ -68,8 +68,6 @@ export function Navbar(props: NavbarProps) {
                         </NavigationMenuLink>
                       </NavigationMenuItem>
                     )
-                    
-                
                   }
 
                   if (menuItem._type === 'menuWithSubmenu') {

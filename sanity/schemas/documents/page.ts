@@ -100,6 +100,10 @@ export default defineType({
           name: 'ctaSection',
           type: 'ctaSection',
         }),
+        defineArrayMember({
+          name: 'bloque',
+          type: 'bloque_ejemplo',
+        }),
         defineField({
           type: 'image',
           icon: ImageIcon,

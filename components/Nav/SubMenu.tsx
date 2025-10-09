@@ -1,6 +1,3 @@
-
-
-
 import { SettingsQueryResult } from "@/sanity.types";
 import React from "react";
 

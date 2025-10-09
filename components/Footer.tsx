@@ -1,5 +1,3 @@
-import { sanityFetch } from "@/sanity/lib/live";
-import { settingsQuery } from "@/sanity/lib/queries";
 import { GraduationCap } from "lucide-react";
 import React from "react";
 import type { SettingsQueryResult } from "@/sanity.types";
@@ -11,7 +9,6 @@ interface Props {
 }
 
 export const Footer = ({ columns }: Props) => {
-        
     if (!columns || columns.length === 0) return null;
 
     return <footer className="border-t w-full flex justify-center border-border bg-muted/30">

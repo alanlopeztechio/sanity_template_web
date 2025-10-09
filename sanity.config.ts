@@ -27,6 +27,7 @@ import { linkExternal } from './sanity/schemas/objects/link/linkExternal'
 import { linkInternal } from './sanity/schemas/objects/link/linkInternal'
 import { footerType } from './sanity/schemas/objects/global/footer'
 import { navType } from './sanity/schemas/objects/global/nav'
+import { bloque } from './sanity/schemas/objects/bloque_ejemplo'
 
 const title =
   process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE || 'Next.js Personal Website with Sanity.io'
@@ -59,6 +60,7 @@ export default defineConfig({
       featureSection,
       statsSection,
       ctaSection,
+      bloque,
     ],
   },
   plugins: [
