@@ -13,12 +13,29 @@
  */
 
 // Source: schema.json
+export type Carousel = {
+  _type: 'carousel'
+  title?: string
+  images?: Array<{
+    asset?: {
+      _ref: string
+      _type: 'reference'
+      _weak?: boolean
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+    }
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    alt?: string
+    caption?: string
+    credit?: string
+    _type: 'image'
+    _key: string
+  }>
+}
+
 export type ImagewithText = {
-  _id: string
   _type: 'ImagewithText'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
   Titulo?: string
   Descripcion?: string
   Imagen?: {
@@ -38,15 +55,17 @@ export type ImagewithText = {
 
 export type InfoBlock = {
   _type: 'infoBlock'
-  iconFile?: {
+  icon?: {
     asset?: {
       _ref: string
       _type: 'reference'
       _weak?: boolean
-      [internalGroqTypeReferenceTo]?: 'sanity.fileAsset'
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
     }
     media?: unknown
-    _type: 'file'
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    _type: 'image'
   }
   title?: string
   subtitle?: string
@@ -335,26 +354,13 @@ export type Page = {
       }
     | ({
         _key: string
-      } & InfoBlock)
-    | {
-        Titulo?: string
-        Descripcion?: string
-        Imagen?: {
-          asset?: {
-            _ref: string
-            _type: 'reference'
-            _weak?: boolean
-            [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
-          }
-          media?: unknown
-          hotspot?: SanityImageHotspot
-          crop?: SanityImageCrop
-          _type: 'image'
-        }
-        Alineacion?: 'left' | 'right'
-        _type: 'ImagewithText'
+      } & Carousel)
+    | ({
         _key: string
-      }
+      } & InfoBlock)
+    | ({
+        _key: string
+      } & ImagewithText)
     | ({
         _key: string
       } & Timeline)
@@ -591,6 +597,7 @@ export type SanityAssetSourceData = {
 }
 
 export type AllSanitySchemaTypes =
+  | Carousel
   | ImagewithText
   | InfoBlock
   | CtaSection
@@ -685,6 +692,9 @@ export type PagesBySlugQueryResult = {
   body: Array<
     | ({
         _key: string
+      } & Carousel)
+    | ({
+        _key: string
       } & CtaSection)
     | ({
         _key: string
@@ -692,6 +702,9 @@ export type PagesBySlugQueryResult = {
     | ({
         _key: string
       } & HeroSection)
+    | ({
+        _key: string
+      } & ImagewithText)
     | ({
         _key: string
       } & InfoBlock)
@@ -732,25 +745,6 @@ export type PagesBySlugQueryResult = {
         caption?: string
         alt?: string
         _type: 'image'
-        _key: string
-      }
-    | {
-        Titulo?: string
-        Descripcion?: string
-        Imagen?: {
-          asset?: {
-            _ref: string
-            _type: 'reference'
-            _weak?: boolean
-            [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
-          }
-          media?: unknown
-          hotspot?: SanityImageHotspot
-          crop?: SanityImageCrop
-          _type: 'image'
-        }
-        Alineacion?: 'left' | 'right'
-        _type: 'ImagewithText'
         _key: string
       }
   > | null

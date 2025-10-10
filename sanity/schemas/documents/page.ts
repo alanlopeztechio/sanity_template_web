@@ -79,7 +79,13 @@ export default defineType({
           },
           styles: [],
         }),
-        // Custom blocks
+          // Custom blocks
+        //carrousel
+        defineArrayMember({
+          name: 'carousel',
+          type: 'carousel',
+        }),
+      
         defineArrayMember({
         name: 'infoBlock',
         type: 'infoBlock',

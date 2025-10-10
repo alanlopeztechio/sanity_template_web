@@ -11,6 +11,7 @@ import { CTASection } from './CTASection'
 import { InfoBlock } from './InfoBlock'
 import { ImagewithText } from './ImagewithText'
 import { urlFor } from '@/lib/sanity'
+import { CarouselBlock } from './CarouselBlock'
 export function CustomPortableText({
   id,
   type,
@@ -91,8 +92,12 @@ export function CustomPortableText({
        
         const {Titulo, Descripcion, Imagen, Alineacion} = value || {}
         return <ImagewithText Titulo={Titulo} Descripcion={Descripcion} Imagen={Imagen} Alineacion={Alineacion}/>
-      }
-     
+      },
+       carousel: ({ value }) => {
+    
+    const { title, images } = value || {};
+    return <CarouselBlock title={title} images={images} />;
+  }
      }
   }
   return <PortableText components={components} value={value} />

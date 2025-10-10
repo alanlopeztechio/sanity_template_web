@@ -25,6 +25,7 @@ import { statsSection } from './sanity/schemas/objects/statsSection'
 import ctaSection from './sanity/schemas/objects/ctaSection'
 import infoBlock from './sanity/schemas/objects/infoBlock'
 import ImagewithText from './sanity/schemas/objects/ImagewithText'
+import carusel from './sanity/schemas/objects/carousel'
 const title =
   process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE || 'Next.js Personal Website with Sanity.io'
 
@@ -58,7 +59,9 @@ export default defineConfig({
       // bloque de informacion
       infoBlock,
       // Imagen con texto
-       ImagewithText
+       ImagewithText,
+       // Carrusel de imagenes
+        carusel,
     ],
   },
   plugins: [
