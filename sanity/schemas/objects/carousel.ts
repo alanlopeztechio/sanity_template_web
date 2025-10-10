@@ -34,8 +34,6 @@ export default defineType({
           options: {
             hotspot: true,
           },
-        
-    
         },
       ],
       
